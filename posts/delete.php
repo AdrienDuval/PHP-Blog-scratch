@@ -1,24 +1,28 @@
 <?php
-// require_once "../includes/header.php";
-// require_once "../config/config.php";
+// Require the configuration file
+require_once "../config/config.php";
 
-// if(isset($_GET['delete_post_id'])) {
+// Check if there is a post to delete
+if(isset($_GET['delete_post_id'])) {
 
-//     $post_to_delete = $_GET['delete_post_id'];
-//     echo $post_to_delete;
+    // Get the post id from the URL parameter and store it in a variable
+    $post_to_delete = $_GET['delete_post_id'];
 
-//     $sql = "DELETE FROM posts WHERE postID=10";
+    // Create a SQL query to delete the post with the matching id
+    $sql = "DELETE FROM posts WHERE postID='$post_to_delete'";
 
-//     if ($conn->query($sql) === TRUE) {
-//         echo "Post deleted succesfully";
-//     } else {
-//         echo "Error deleting record: " . $conn->error;
-//     }
+    // Check if the query was executed successfully
+    if ($conn->query($sql) === TRUE) {
+        // If the query was successful, redirect to the "clean_post" page with the deleted post id as a parameter in the URL
+        header("location: http://localhost/clean_post?post_deleted_id=$post_to_delete");
+        exit();
+    } else {
+        // If the query was not successful, print an error message
+        echo "Error deleting record: " . $conn->error;
+    }
 
-// } else {
-//     echo 'not set';
-// }
-
-
-// require_once "../includes/footer.php";
+} else {
+    // If there is no post to delete, print "not set"
+    echo 'not set';
+}
 ?>
