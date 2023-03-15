@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
     $dir = 'images/' . basename($post_image_link);
 
     if($post_title == "" || $post_subtitle == "" || $post_body == "" || $post_image_link == "" ) {
-        echo "FIlL all the inputs";
+        echo "Fill all the inputs";
     } else {
         $update = "UPDATE posts SET title = ?, subtitle = ?, body = ?, image = ? WHERE postID = '$post_id'";
 
