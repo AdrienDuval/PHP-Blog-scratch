@@ -54,8 +54,8 @@ if(isset($_GET['post_id'])) {
                     &middot; Images by
                     <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>
                 </p>
-                <a href="http://localhost/clean_post/posts/delete.php?delete_post_id=<?php echo $row->postID;; ?>" class="btn btn-danger text-center float-end">Delete</a>
-                <a href="#" class="btn btn-warning text-center ">Update</a>
+                <a href="http://localhost/clean_post/posts/delete.php?delete_post_id=<?php echo $row->postID; ?>" class="btn btn-danger text-center float-end">Delete</a>
+                <a href="http://localhost/clean_post/posts/update.php?update_post_id=<?php echo $row->postID; ?>" class="btn btn-warning text-center ">Update</a>
                 <br>
             </div>
         </div>
