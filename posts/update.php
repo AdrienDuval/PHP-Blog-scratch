@@ -28,7 +28,9 @@ if (isset($_GET['update_post_id'])) {
     <div class="form-outline mb-4">
         <textarea  class="form-control" id="exampleFormControlTextarea1" name="post_body" rows="10" placeholder="body"><?php echo $row->body ?></textarea>
     </div>
-
+    <div class="image-preview">
+        <img src="http://localhost/clean_post/posts/images/<?php echo $row->image;?>" alt="<?php echo $row->image;?>" width="200" height="100">
+    </div>
     <div class="form-outline mb-4">
         <input type="file" name="post_image_link" id="form2Example1" class="form-control" placeholder="image" />
     </div>
