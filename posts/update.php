@@ -8,9 +8,14 @@ if (isset($_GET['update_post_id'])) {
     $result = $conn->query($query);
     $rows = array();
     $row = $result->fetch_object();
-
+    $userID = $_SESSION['user_id'];
+    $postUserID = $row->user_id; 
+    if ($userID !== $postUserID) {
+        header("location: http://localhost/clean_post");
+    } 
 } else {
-    echo "Please select the post you want to edit or the post you want to edit is not found";
+header("location: http://localhost/clean_post");
+    
 }
 ?>
 

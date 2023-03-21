@@ -12,6 +12,12 @@ if(isset($_GET['delete_post_id'])) {
     $result = $conn->query($select);
     $rows = array();
     $row =  $result->fetch_object();
+    $userID = $_SESSION['user_id'];
+    $postUserID = $row->user_id; 
+    if ($userID !== $postUserID) {
+        header("location: http://localhost/clean_post");
+        exit();
+    } 
     // print_r($row);
     unlink("images/" . $row->image . "");
     // exit();git ds
