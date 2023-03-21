@@ -14,7 +14,7 @@ if(isset($_GET['delete_post_id'])) {
     $row =  $result->fetch_object();
     // print_r($row);
     unlink("images/" . $row->image . "");
-    // exit();
+    // exit();git ds
 
     // Create a SQL query to delete the post with the matching id
     $sql = "DELETE FROM posts WHERE postID='$post_to_delete'";
@@ -28,6 +28,7 @@ if(isset($_GET['delete_post_id'])) {
         // If the query was not successful, print an error message
         echo "Error deleting record: " . $conn->error;
     }
+ 
 
 } else {
     // If there is no post to delete, print "not set"
