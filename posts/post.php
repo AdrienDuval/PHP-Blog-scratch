@@ -22,6 +22,22 @@ if (isset($_GET['post_id'])) {
     //     print_r($rows);
     //     echo $rows->title;
     // }
+
+    // get post category name of that post 
+
+    $catquyery = "SELECT * FROM categories";
+    $catresult = $conn->query($catquyery);
+    $catRows = array();
+    while ($catRow = $catresult->fetch_object()) {
+        $catRows[] = $catRow;
+    }
+
+    foreach ($catRows as $catRow) {
+        if ($catRow->catID === $row->post_cat) {
+            $the_post_cat = $catRow->category_name;
+            $the_post_cat_id = $catRow->catID;
+        }
+    }
 } else {
     echo "404";
     exit();
@@ -37,7 +53,8 @@ if (isset($_GET['post_id'])) {
                     <h1><?php echo  $row->title; ?></h1>
                     <span class="subheading"><?php echo  $row->subtitle; ?></span>
                     <p>Posted by <?php echo $row->username ?> at <?php echo date('M', strtotime($row->create_at)) . ',' . date('d', strtotime($row->create_at)) . ' ' . date('Y', strtotime($row->create_at)); ?></p>
-
+                    <h5 class="h5">Category </h5>
+                    <a href="http://localhost/clean_post/categories/category.php?cat_id=<?php echo $the_post_cat_id; ?>" class="btn btn-info"><?php echo  $the_post_cat; ?></a>
                 </div>
             </div>
         </div>
@@ -61,7 +78,7 @@ if (isset($_GET['post_id'])) {
                     if ($userID === $postUserID) { ?>
                         <a href="http://localhost/clean_post/posts/delete.php?delete_post_id=<?php echo $row->postID; ?>" class="btn btn-danger text-center float-end">Delete</a>
                         <a href="http://localhost/clean_post/posts/update.php?update_post_id=<?php echo $row->postID; ?>" class="btn btn-warning text-center ">Update</a>
-                        <?php
+                <?php
                     } else {
                         echo '<h3><a href="http://localhost/clean_post/auth/login.php">Loing with your user to edit the post </h3>';
                     }
