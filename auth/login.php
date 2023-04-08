@@ -25,14 +25,25 @@ if (isset($_POST['submit'])) {
     if (password_verify($pwd, $row['mypassword'])) {
       $_SESSION['username'] = $row['username'];
       $_SESSION['user_id'] = $row['id'];
-      header("Location: http://localhost/clean_post/index.php");
+      header("Location: http://localhost/clean_post/index.php?success=loginsuccess");
+    } else {
+      header("Location: http://localhost/clean_post/auth/login.php?error=wrongpassword");
     }
+  } else {
+    header("Location: http://localhost/clean_post/auth/login.php?error=notfound");
   }
 }
+if ($_GET['error'] == 'wrongpassword') {
 ?>
-<?php if (isset($error)) : ?>
-  <p><?php echo $error; ?></p>
-<?php endif; ?>
+  <p class="alert alert-danger"><?php echo "Wrong Password"; ?></p>
+<?php
+} elseif ($_GET['error'] == 'notfound') {
+?>
+  <p class="alert alert-danger"> <?php echo "Not Found "; ?></p>
+<?php
+}
+
+?>
 <form method="POST" action="login.php">
   <!-- Email input -->
   <div class="form-outline mb-4">

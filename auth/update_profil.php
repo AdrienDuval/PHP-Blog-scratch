@@ -6,25 +6,24 @@ require_once "../config/config.php";
 
 
 if (isset($_SESSION['user_id'])) {
-    if (isset($_GET['update_user_id'])) {
-        $url_user_id = $_SESSION['update_user_id'];
-        $current_user_id =  $_SESSION['user_id'];
 
-        $query = "SELECT * FROM users WHERE id = '$current_user_id'";
-        $result = $conn->query($query);
-        $rows = array();
-        while ($row = $result->fetch_object()) {
-            $rows[] = $row;
-        }
+    $current_user_id =  $_SESSION['user_id'];
 
-        foreach ($rows as $row) {
-            $username = $row->username;
-            $user_email = $row->email;
-        }
-    } else {
-        header("location: http://localhost/clean_post/");
+    $query = "SELECT * FROM users WHERE id = '$current_user_id'";
+    $result = $conn->query($query);
+    $rows = array();
+    while ($row = $result->fetch_object()) {
+        $rows[] = $row;
     }
+
+    foreach ($rows as $row) {
+        $username = $row->username;
+        $user_email = $row->email;
+    }
+} else {
+    header("location: http://localhost/clean_post?error=userIdWrong");
 }
+
 ?>
 <form method="POST" action="update_profile.func.php">
     <!-- Email input -->

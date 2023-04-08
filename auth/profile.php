@@ -7,7 +7,7 @@ require_once "../config/config.php";
 //Note displaying the password on the website is not a good practice if the users fogets the password they can reset it using the email and user name 
 if (isset($_SESSION['user_id'])) {
 
-    $url_user_id = $_GET['user_id'];
+    $url_user_id = $_SESSION['user_id'];
     $current_user_id =  $_SESSION['user_id'];
 
     $query = "SELECT * FROM users WHERE id = '$current_user_id'";
