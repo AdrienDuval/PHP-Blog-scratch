@@ -24,7 +24,7 @@
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav side-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-white" style="margin-left: 20px;" href="index.html">Home
+                            <a class="nav-link text-white" style="margin-left: 20px;" href="index.php">Home
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
