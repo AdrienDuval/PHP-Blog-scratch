@@ -33,28 +33,32 @@ if (isset($_POST['submit'])) {
     header("Location: http://localhost/clean_post/auth/login.php?error=notfound");
   }
 }
-if ($_GET['error'] == 'wrongpassword') {
+if (isset($_GET['error'])) {
+  if ($_GET['error'] == 'wrongpassword') {
 ?>
-  <p class="alert alert-danger"><?php echo "Wrong Password"; ?></p>
+    <p class="alert alert-danger"><?php echo "Wrong Password"; ?></p>
+  <?php
+  } elseif ($_GET['error'] == 'notfound') {
+  ?>
+    <p class="alert alert-danger"> <?php echo "Not Found "; ?></p>
+  <?php
+  } elseif ($_GET['error'] == 'emptyinput') {
+  ?>
+    <p class="alert alert-danger"> <?php echo "Fill out all the inputs "; ?></p>
 <?php
-} elseif ($_GET['error'] == 'notfound') {
-?>
-  <p class="alert alert-danger"> <?php echo "Not Found "; ?></p>
-<?php
+  }
 }
-
 ?>
-<form method="POST" action="login.php">
+<form method="POST" action="login.php" autocomplete="off">
   <!-- Email input -->
   <div class="form-outline mb-4">
-    <input type="email" name="email" id="form2Example1" class="form-control" placeholder="Email" />
-
+    <input type="email" name="email" id="form2Example1" class="form-control" placeholder="Email" autocomplete="off" />
   </div>
 
 
   <!-- Password input -->
   <div class="form-outline mb-4">
-    <input type="password" name="password" id="form2Example2" placeholder="Password" class="form-control" />
+    <input type="password" name="password" id="form2Example2" placeholder="Password" class="form-control" autocomplete="off" />
 
   </div>
 
