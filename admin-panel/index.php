@@ -1,5 +1,24 @@
-<?php require "../admin-panel/layouts/header.php" ?>
+<?php
+require "../admin-panel/layouts/header.php";
+
+if (!isset($_SESSION["adminname"])) {
+  header("location: http://localhost/clean_post/admin-panel/admins/login-admins.php");
+  exit;
+}
+?>
+
 <div class="row">
+  <?php if (isset($_GET['success'])) : ?>
+    <div class="col-md-12">
+      <div class="card alert-success">
+        <div class="card-body">
+          <?php if ($_GET['success'] == 'loginsuccess') : ?>
+            <div class="ctn ">Hello, <strong><?php echo $_SESSION["adminname"] ?></strong> </div>
+          <?php endif; ?>
+        </div>
+      </div>
+    </div>
+  <?php endif; ?>
   <div class="col-md-4">
     <div class="card">
       <div class="card-body">
@@ -16,6 +35,12 @@
         <h5 class="card-title">Categories</h5>
 
         <p class="card-text">number of categories: 4</p>
+
+        <?php
+        if (isset($_SESSION['adminname'])) {
+          echo $_SESSION['adminname'];
+        }
+        ?>
 
       </div>
     </div>

@@ -3,9 +3,9 @@
 <?php require_once "../../config/config.php" ?>
 <?php  
 
-// if (isset($_SESSION['username'])) {
-//   header("location: http://localhost/clean_post/index.php");
-// }
+if (isset($_SESSION['adminname'])) {
+  header("location: http://localhost/clean_post/admin-panel/index.php");
+}
 ?>
 <?php
 if (isset($_POST['submit'])) {
@@ -23,8 +23,9 @@ if (isset($_POST['submit'])) {
 
   if (mysqli_num_rows($login)) {
     if (password_verify($pwd, $row['mypassword'])) {
-      // $_SESSION['username'] = $row['username'];
-      // $_SESSION['user_id'] = $row['id'];
+      $_SESSION['adminname'] = $row['adminname'];
+      $_SESSION['admin_id'] = $row['id'];
+      $_SESSION['admin_email'] = $row['email'];
       header("Location: http://localhost/clean_post/admin-panel/index.php?success=loginsuccess");
     } else {
       header("Location: http://localhost/clean_post/admin-panel/admins/login-admins.php?error=wrongpassword");
