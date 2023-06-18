@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
       header("Location: http://localhost/clean_post/auth/login.php?error=wrongpassword");
     }
   } else {
-    header("Location: http://localhost/clean_post/auth/login.php?error=notfound");
+    header("Location: http://localhost/clean_post/auth/login.php?error=usernotfound");
   }
 }
 if (isset($_GET['error'])) {
@@ -38,9 +38,9 @@ if (isset($_GET['error'])) {
 ?>
     <p class="alert alert-danger"><?php echo "Wrong Password"; ?></p>
   <?php
-  } elseif ($_GET['error'] == 'notfound') {
+  } elseif ($_GET['error'] == 'usernotfound') {
   ?>
-    <p class="alert alert-danger"> <?php echo "Not Found "; ?></p>
+    <p class="alert alert-danger"> <?php echo "User Not Found "; ?></p>
   <?php
   } elseif ($_GET['error'] == 'emptyinput') {
   ?>

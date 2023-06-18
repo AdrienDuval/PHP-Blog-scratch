@@ -7,7 +7,7 @@
     <title>Admin Panel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="styles/style.css" rel="stylesheet">
+    <link href="http://localhost/clean_post/admin-panel/styles/style.css" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
@@ -22,20 +22,20 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav side-nav">
+                    <ul class="navbar-nav side-nav">    
                         <li class="nav-item">
-                            <a class="nav-link text-white" style="margin-left: 20px;" href="index.php">Home
+                            <a class="nav-link text-white" style="margin-left: 20px;" href="http://localhost/clean_post/admin-panel/index.php">Home
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="admins/admins.html" style="margin-left: 20px;">Admins</a>
+                            <a class="nav-link" href="admins/admins.php" style="margin-left: 20px;">Admins</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="categories-admins/show-categories.html" style="margin-left: 20px;">Categories</a>
+                            <a class="nav-link" href="categories-admins/show-categories.php" style="margin-left: 20px;">Categories</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="posts-admins/show-posts.html" style="margin-left: 20px;">Posts</a>
+                            <a class="nav-link" href="posts-admins/show-posts.php" style="margin-left: 20px;">Posts</a>
                         </li>
                         <!--  <li class="nav-item">
             <a class="nav-link" href="#" style="margin-left: 20px;">Comments</a>
@@ -48,7 +48,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="admins/login-admins.html">login
+                            <a class="nav-link" href="admins/login-admins.php">login
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
