@@ -10,7 +10,8 @@ if (!isset($_SESSION["adminname"])) {
 $tables = array(
   "admins" => "admin_numbers",
   "posts" => "post_numbers",
-  "categories" => "cats_numbers"
+  "categories" => "cats_numbers",
+  "users" => "users_numbers"
 );
 
 // Initialize an empty array to store the results
@@ -72,6 +73,18 @@ foreach ($tables as $table => $alias) {
 
         <p class="card-text">number of Admins: 
         <?php echo $results["admins"] ?>
+        </p>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Users</h5>
+
+        <p class="card-text">number of Users: 
+        <?php echo $results["users"] ?>
         </p>
 
       </div>
