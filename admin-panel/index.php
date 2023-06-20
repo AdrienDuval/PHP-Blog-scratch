@@ -1,10 +1,33 @@
 <?php
 require "../admin-panel/layouts/header.php";
+require_once "../config/config.php";
 
 if (!isset($_SESSION["adminname"])) {
   header("location: http://localhost/clean_post/admin-panel/admins/login-admins.php");
   exit;
 }
+// Define an array of table names and their respective aliases
+$tables = array(
+  "admins" => "admin_numbers",
+  "posts" => "post_numbers",
+  "categories" => "cats_numbers"
+);
+
+// Initialize an empty array to store the results
+$results = array();
+
+// Loop through the tables
+foreach ($tables as $table => $alias) {
+  // Execute the query and fetch the result
+  $query = "SELECT COUNT(*) AS $alias FROM $table";
+  $result = $conn->query($query);
+  
+  // Fetch the row and store it in the results array
+  while ($row = $result->fetch_object()) {
+      $results[$table] = $row->$alias;
+  }
+}
+
 ?>
 
 <div class="row">
@@ -24,7 +47,9 @@ if (!isset($_SESSION["adminname"])) {
       <div class="card-body">
         <h5 class="card-title">Posts</h5>
         <!-- <h6 class="card-subtitle mb-2 text-muted">Bootstrap 4.0.0 Snippet by pradeep330</h6> -->
-        <p class="card-text">number of posts: 8</p>
+        <p class="card-text">number of Posts
+          <?php echo $results["posts"] ?>
+        </p>
 
       </div>
     </div>
@@ -34,14 +59,9 @@ if (!isset($_SESSION["adminname"])) {
       <div class="card-body">
         <h5 class="card-title">Categories</h5>
 
-        <p class="card-text">number of categories: 4</p>
-
-        <?php
-        if (isset($_SESSION['adminname'])) {
-          echo $_SESSION['adminname'];
-        }
-        ?>
-
+        <p class="card-text">number of categories: 
+        <?php echo $results["categories"] ?>
+        </p>
       </div>
     </div>
   </div>
@@ -50,45 +70,13 @@ if (!isset($_SESSION["adminname"])) {
       <div class="card-body">
         <h5 class="card-title">Admins</h5>
 
-        <p class="card-text">number of admins: 3</p>
+        <p class="card-text">number of Admins: 
+        <?php echo $results["admins"] ?>
+        </p>
 
       </div>
     </div>
   </div>
 </div>
-<!--  <div class="row">
-        <div class="col">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table> -->
+
 <?php require "../admin-panel/layouts/footer.php" ?>
