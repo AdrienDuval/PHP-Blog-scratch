@@ -88,6 +88,7 @@ function loginUser($conn, $email, $pwd)
         session_start();
         $_SESSION['id'] = $uidExist["id"];
         $_SESSION['email'] = $uidExist["email"];
+        $_SESSION['created_at'] = $uidExist["created_at"];
         header("location: http://localhost/clean_post/index.php?error=login");
     }
 }

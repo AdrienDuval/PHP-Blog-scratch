@@ -26,6 +26,7 @@ if (isset($_POST['submit'])) {
       $_SESSION['adminname'] = $row['adminname'];
       $_SESSION['admin_id'] = $row['id'];
       $_SESSION['admin_email'] = $row['email'];
+      $_SESSION['created_at'] = $row['created_at'];
       header("Location: http://localhost/clean_post/admin-panel/index.php?success=loginsuccess");
     } else {
       header("Location: http://localhost/clean_post/admin-panel/admins/login-admins.php?error=wrongpassword");
